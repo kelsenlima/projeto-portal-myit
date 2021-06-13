@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+<head>
+
+		<!-- Bloquear botão direito do mouse: -->
+
+		<script>      
+		function click() {       
+		if (event.button==2||event.button==3) {       
+		oncontextmenu=&#39;return false&#39;;       
+		}       
+		}       
+		document.onmousedown=click       
+		document.oncontextmenu = new Function(&quot;return false;&quot;)       
+		</script>
+
+		<!-- Bloquear seleção de texto: -->
+
+		<script language='JavaScript'>
+		function bloquear(e){return false}
+		function desbloquear(){return true}
+		document.onselectstart=new Function (&quot;return false&quot;)
+		if (window.sidebar){document.onmousedown=bloquear
+		document.onclick=desbloquear}
+		</script>
+
+		<!-- Bloquear tecla Ctrl+C/Ctrl+V: -->
+
+		<script language='JavaScript'>
+		function checartecla (evt)
+		{if (evt.keyCode == &#39;17&#39;)
+		{alert(&quot;Comando Desativado&quot;)
+		return false}
+		return true}
+		</script>
+
+		<!-- Bloquear arrastar e soltar: -->
+
+		<script language='javascript'>
+		function validateKey (evt)
+		{if (evt.keyCode == &#39;17&#39;)
+		{alert(&quot;Comando Desativado&quot;)
+		return false}
+		return true}
+		</script>		
+		
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Kelsen Lima, kelsen@flameus.com.br">
+		<meta name='copyright' content='Flameus IT'>
+		<meta name='url' content='https://www.flameus.com.br'>
+		<meta name='robots' content='index,follow'>
+		<title>Controle de Acesso Portaria Final de Semana</title> 
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <!--<meta charset="utf-8" /> -->
+		
+		<!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="../code/assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../code/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../code/assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../code/assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../code/assets/ico/apple-touch-icon-57-precomposed.png">
+		
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-image: url(../code/images/background.jpg);
+
+}
+/* ~~ Seletores de elementos/tag ~~ */
+ul, ol, dl { /* Devido a variações entre navegadores, é recomendado zerar o padding e as margem nas listas. É possível especificar as quantidades aqui ou nos itens da lista (LI, DT, DD) que eles contêm. Lembre-se: o que você fizer aqui ficará em cascata para a lista de navegação a não ser que você escreva outro seletor mais específico. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* ao remover a margem superior, as margens podem escapar das suas containing block. A margem inferior restante vai mantê-la afastada de qualquer elemento que se segue. */
+	padding-right: 15px;
+	padding-left: 15px; /* ao adicionar o padding aos lados dos elementos dentro dos blocos, ao invés dos próprios elementos dos blocos, qualquer combinação de modelo de caixa será removida. Um bloco aninhado com padding lateral também pode ser usado como método alternativo. */
+}
+a img { /* esse seletor remove a borda azul padrão exibida em alguns navegadores ao redor de uma imagem circundada por um link. */
+	border: none;
+}
+/* ~~ A estilização dos links do seu site deve permanecer nesta ordem – incluindo o grupo de seletores que criam o efeito hover. ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* a não ser que você crie o estilo de seus links para que pareçam totalmente exclusivos, é melhor utilizar links sublinhados para uma identificação visual mais rápida. */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* esse grupo de seletores dará ao navegador que estiver usando um teclado, a mesma sensação de focalizar como se estivesse usando um mouse. */
+	text-decoration: none;
+}
+/* ~~ Esse contêiner de largura fixa envolve todos os outros blocos~~ */
+.container {
+	width: 960px;
+	background-color: #FFFFFF;
+	margin: 0 auto; /* o valor automático nos lados, combinado com a largura, centraliza o layout */
+}
+/* ~~ O cabeçalho não tem uma largura predeterminada. Ele se estenderá por toda a largura do seu layout. ~~ */
+header {
+	background-color: #011c4b;
+}
+/* ~~ Essas são as colunas do layout. ~~ 
+
+1) O padding é colocado somente na parte superior e/ou inferior dos elementos de blocos. Os elementos nesses blocos têm padding em seus lados impedindo o surgimento do “modelo tipo caixa”. Lembre-se: ao adicionar qualquer padding lateral ou borda ao próprio bloco, ele será adicionado à largura que você define para criar a largura *total*. Também é possível remover o padding no elemento dentro do bloco e estabelecer um segundo elemento de bloco dentro do primeiro, sem largura, e com o padding necessário para o seu design.
+
+2) Como as colunas são todas flutuantes, não foi atribuída nenhuma margem a elas. Se for necessário adicionar margem, evite colocá-la no lado flutuante (por exemplo, uma margem direita em um bloco definido para flutuar à direita). Em vez disso, muitas vezes é utilizado o padding . Para os blocos em que essa regra tem que ser quebrada, é necessário adicionar a declaração "exibição: inline" à regra do elemento de bloco para solucionar um erro recorrente em algumas versões do Internet Explorer em que a imagem é duplicada.
+
+3) Como as classes podem ser usadas diversas vezes em um documento (e um elemento também pode ter várias classes aplicadas), foram atribuídas às colunas nomes de classe ao invés de IDs. Por exemplo, se for necessário, os blocos com duas barras laterais podem ser empilhados. Se preferir, é possível alterar facilmente para os IDs desde que esteja usando-os somente uma vez em cada documento.
+
+4) Caso prefira seu navegador à esquerda ao invés de à direita, simplesmente flutue essas colunas para a direção oposta, todas à esquerda ao invés de à direita, e elas serão apresentadas na ordem inversa. Não há necessidade de mover os blocos em torno da fonte HTML.
+
+*/
+.sidebar1 {
+	width: 180px;
+	background-color: #FFFFFF;
+	padding-bottom: 10px;
+	float: left;
+}
+.content {
+	padding: 10px 0;
+	width: 600px;
+	float: left;
+}
+aside {
+	float: left;
+	width: 180px;
+	background-color: #FFFFFF;
+	padding: 10px 0;
+}
+
+/* ~~ Esse seletor agrupado fornece as listas dentro do espaço da área de conteúdo ~~ */
+.content ul, .content ol {
+	padding: 0 15px 15px 40px; /* esse padding espelha o padding direito nos cabeçalhos e na regra de parágrafo acima. O padding foi colocado na parte inferior para obter espaço entre outros elementos das listas e à esquerda para criar o recuo. Estes podem ser ajustados como desejar. */
+}
+
+/* ~~ Os estilos de lista de navegação (podem ser removidos se for escolhido o uso de um submenu criado anteriormente, como o Spry) ~~ */
+ul.nav {
+	list-style: none; /* isso remove o marcador de lista */
+	border-top: 1px solid #666; /* isso cria a borda da parte superior para os links – todos os outros são colocados usando uma borda na parte inferior no LI */
+	margin-bottom: 15px; /* isso cria o espaço entre a navegação no conteúdo abaixo */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* isso cria a separação do botão */
+}
+ul.nav a, ul.nav a:visited { /* ao agrupar esses seletores, seus links mantêm a aparência de botão mesmo após terem sido visitados. */
+	padding: 5px 5px 5px 15px;
+	display: block; /* isso fornece as propriedades de bloqueio de links, preenchendo todo o LI. Assim, toda a área responderá ao clique do mouse. */
+	width: 160px;  /*essa largura faz com que o botão inteiro possa ser clicado no IE6. Se não for necessário estar compatível com o IE6, ele pode ser removido. Calcule a largura apropriada subtraindo o padding neste link da largura do contêiner da barra lateral. */
+	text-decoration: none;
+	background-color: #C6D580;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* isso altera o fundo e a cor do texto para navegação com o mouse ou teclado. */
+	background-color: #ADB96E;
+	color: #FFF;
+}
+
+/* ~~ O rodapé ~~ */
+footer {
+	padding: 10px 0;
+	background-color: #011C4B;
+	position: relative;/* isso possibilita que o hasLayout do IE6 faça a limpeza corretamente. */
+	clear: both; /* essa propriedade de limpeza força o contêiner a reconhecer o conteúdo das colunas e onde elas terminam. */
+}
+/* ~~ Flutuações diversas/limpeza de classes ~~ */
+.fltrt {  /* essa classe pode ser usada para flutuar um elemento à direita da página. O elemento flutuado deve preceder o elemento e ser o próximo da página. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* essa classe pode ser usada para flutuar um elemento à esquerda da página. O elemento flutuado deve preceder o elemento e ser o próximo da página. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* essa classe pode ser colocada em um <br /> ou em um elemento de bloco vazio como o elemento final que segue o último bloco flutuado (no contêiner) caso o rodapé seja removido ou retirado do contêiner. */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+/*Suporte HTML5 – Define novas tags do HTML5 para exibir blocos. Assim os navegadores saberão como processar as tags de forma apropriada. */
+header, section, footer, aside, article, figure {
+	display: block;
+}
+-->
+</style><!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--></head>
+
+<!-- Bloqueio contra copia -->
+<body expr:class="&quot;loading&quot; + data:blog.mobileClass" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onkeydown="return false">
+
+<div class="container">
+  <header>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </header>
+  <aside></aside>
+  <article class="content">
+    <h2>Portaria - Acesso Finais de Semana    </h2>
+      <h5>Formulário de controle de acesso à portaria nos finais de semana</h5>
+    <section>
+    <form action="cadastro.php" method="post" name="formulario" id="formulario_cadastro" accept-charset="UTF-8">
+      <p>
+        <label>1. Nome Completo<br>
+          <br>
+        </label> 
+        <input name="nome_completo" type="text" required size="70" maxlength="150" />
+        <span style="color: #F00">*</span>      </p>
+      <p>
+        <label>2. Data de Entrada</label> 
+      </p>
+      <p>
+        <input name="data_entrada" type="date" required />
+        <span style="color: #F00">*</span></p>
+      <p>
+        <label>3. Empresa</label>
+      </p>
+      <p>
+	    <!-- Radio Button seleção de empresas -->
+		<input type="radio" name="empresa" value="GAT Logistica">GAT Logistica <br>
+		<input type="radio" name="empresa" value="Evolução">Evolução <br>
+		<input type="radio" name="empresa" value="Fernandes Limpeza">Fernandes Limpeza <br>
+		<input type="radio" name="empresa" value="Truly Nolen">Truly Nolen<br>
+		<input type="radio" name="empresa" value="Visual Media 22">Visual Media 22<br>
+		<input type="radio" name="empresa" value="J&C Segurança">J&C Segurança<br>
+		<input type="radio" name="empresa" value="OnixSAT">OnixSAT<br>
+		<input type="radio" name="empresa" value="Trucks Control">Trucks Control<br>
+		<input type="radio" name="empresa" value="Outra">Outra:
+		<input type="text" name="empresa_outra" size="14">
+        <!-- <select name="empresa" required id="empresa">
+          <br />
+          <option value="GAT Logistica">GAT Logistica</option>
+          <option value="Evolução">Evolução</option>
+          <option value="Fernandes Limpeza">Fernandes Limpeza</option>
+          <option value="Truly Nolen">Truly Nolen</option>
+          <option value="Trucks Control">Trucks Control</option>
+          <option value="Visual Media 22">Visual Media 22</option>
+          <option value="OnixSAT">OnixSAT</option>
+          <option value="J&C Segurança">J&C Segurança</option>
+        </select>
+        <span style="color: #F00">*</span></p> -->
+      <p>
+        <label>4. Horário de Entrada</label> 
+      </p>
+      <p>
+        <input name="hora_chegada" type="time" required />
+        <label><span style="color: #F00">*</span><br>
+          <br>
+        5. Horário de Saída</label> 
+      </p>
+      <p>
+        <input name="hora_saida" type="time" required />
+        <span style="color: #F00">*</span></p>
+      <p>
+        <label>6. Motivo de Acesso</label> 
+      </p>
+      <p>
+        <input name="motivo_acesso" type="text" required size="70" maxlength="150" />
+        <span style="color: #F00">*</span></p>
+      <p>
+        <label>7. Setor</label>
+      </p>
+      <p>
+        <select name="setor_acesso" required id="setor_acesso">
+          <br />
+          <option value="Assessoria">Assessoria</option>
+          <option value="Atendimento">Atendimento</option>
+          <option value="CD Farma">CD Farma</option>
+          <option value="CD Lubrificantes">CD Lubrificantes</option>
+          <option value="Comercial">Comercial</option>
+          <option value="Compras">Compras</option>
+          <option value="Diretoria">Diretoria</option>
+          <option value="Financeiro">Financeiro</option>
+          <option value="Frota">Frota</option>
+          <option value="Manutenção">Manutenção</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Projetos">Projetos</option>
+          <option value="Qualidade">Qualidade</option>
+          <option value="RH">RH</option>
+          <option value="SSMA - Check List">SSMA - Check List</option>
+          <option value="SSMA - DSP">SSMA - DSP</option>
+          <option value="SSMA - Portaria">SSMA - Portaria</option>
+          <option value="SSMA - Segurança do Trabalho">SSMA - Segurança do Trabalho</option>
+          <option value="TI">TI</option>
+          <option value="Trafego">Trafego</option>
+          <option value="Transporte">Transporte</option>
+        </select>	
+        <span style="color: #F00">*</span></p>
+      <p>
+        <input type="submit" name="enviar" value="Enviar" />
+      </p>
+	
+    </form>
+    </section>
+  <!-- end .content --></article>
+  <aside></aside>
+  <footer></footer>
+  <!-- end .container --></div>
+</body>
+</html>
